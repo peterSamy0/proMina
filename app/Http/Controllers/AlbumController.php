@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Throwable;
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlbumController extends Controller
 {
     public function index()
     {
-        try{
+        try {
             $albums = Album::all();
-            return response()->json($albums, 200);
-        }catch(Throwable $th){
-            return response()->json(['error' => $th->getMessage], 400);
+            return view('gallery', compact('albums'));
+        } catch (Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 400);
         }
     }
+
 
     public function create()
     {
@@ -83,9 +85,14 @@ class AlbumController extends Controller
     public function destroy($id)
     {
         try{
+            $userID = Auth::id();
             $album = Album::findorfail($id);
-            $album->delete();
-            return response()->json('album deleted successfully', 200);
+
+            if($userID == $album->user_id){
+                $album->delete();
+                return redirect()->route('gallery');
+            }
+            return response()->json('unautherized', 419);
         }catch(Throwable $th){
             return response()->json(['error' => $th->getMessage], 400);
         }

@@ -28,6 +28,9 @@
                             {{ auth()->user()->name }}
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link align-items-center d-flex text-light" href="{{ route('gallery') }}">Gallery</a>
+                        </li>
+                        <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="nav-link btn btn-link text-light fw-bold ">Logout</button>
