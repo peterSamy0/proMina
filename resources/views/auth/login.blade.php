@@ -5,7 +5,7 @@
         <h2 class="text-center pt-5 pb-2">Login Page</h2>
     </div>
     <div class="px-5 d-flex align-items-center justify-content-center">
-        <form class="w-50 px-5 border border-1 py-3 rounded" method="POST" action="{{ route('home') }}">
+        <form class="w-50 px-5 border border-1 py-3 rounded" method="POST" action="{{ route('login') }}">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>

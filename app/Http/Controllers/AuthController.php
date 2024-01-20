@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed
-            return view('home');
+            return redirect()->route('home');
         }
 
         // Authentication failed

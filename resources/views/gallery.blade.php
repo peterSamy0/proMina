@@ -14,6 +14,8 @@
                 </div> 
                 <div class="d-flex align-items-center justify-content-between p-3 border border-bottom-1">
                     <a  href="gallery/{{$album->id}}"><i class="fa-regular fa-eye text-success pointer fs-5 me-3"></i></a>
+
+                    <i class="fa-regular fa-pen-to-square"></i>
                     <form action="gallery/{{$album->id}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -26,4 +28,13 @@
             @endforeach
         </div>
     </div>
+
+    <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+          </div>      
+        </div>
+      </div>
 @endsection
